@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ClassBallot</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <script src="./app.js"></script>
+</head>
+
+<body>
+  <h1>ClassBallot</h1>
+  <br>
+  <h2>Add a candidate</h2>
+  <br><label for="name">Name:</label><input type="text" id="name" placeholder="e.g., Bob"></input>
+  <br><label for="speak">Speak:</label><input type="text" id="speak" placeholder="e.g., I am Bob！"></input>
+  <br><br><button id="add" onclick="">Add</button>
+  <br><br>
+  <span id="status"></span>
+  <br>
+
+  <form>
+    <label>Give right</label>
+    <select multiple="multiple">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="fiat">Fiat</option>
+      <option value="audi">Audi</option>
+    </select>
+    <button id="sublime" onclick="">Vote</button>
+  </form>
+
+  <form>
+    <label>Vote</label>
+    <select name="cars">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="fiat">Fiat</option>
+      <option value="audi">Audi</option>
+    </select>
+    <button id="sublime" onclick="">Vote</button>
+  </form>
+</body>
+
+</html>
