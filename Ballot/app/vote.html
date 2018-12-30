@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<title>ClassBallot</title>
+	<link rel="stylesheet" type="text/css" href="vote.css">
+	<script language="javascript"></script>
+	<script src="vote.js"></script>
+	<script src="jquery-3.2.1.js" type="text/javascript"></script>
+</head>
+
+<script>
+	function check() {
+		var addr = document.getElementById("account").value;
+		if (!addr) {
+			alert("地址为空");
+		}
+		else {
+			$.post("http://localhost:8080", { address: addr }, function (res) {
+				if (typeof res.address != undefined) {
+					if (res.address == addr) {
+
+						document.form1.action = "http://localhost:8080/host"
+						document.getElementById("submit").type = "submit"
+						document.getElementById("submit").value = "Host"
+					}
+					else {
+
+						//document.form1.action = "http://localhost:8080/vote"
+						document.getElementById("submit").type = "submit"
+						document.getElementById("submit").value = "Voter"
+						document.getElementById("div1").style.display = "none";
+						document.getElementById("div2").style.display = "block";
+					}
+				}
+				else alert("Error");
+
+			})
+
+		}
+
+	}
+</script>
+
+
+<body>
+	<div id="div1" style="display:block;">
+		<h1>Login</h1><br>
+		<form name="form1" method="get" action="">
+			<div id="key"></div>
+			<label for="account">Account Address:</label><input type="text" id="account" placeholder="e.g.,0xe03ab3eC24218e0ec3B69ef25E7851f5026d9129"></input><br />
+			<input type='button' value='登陆' id="submit" onclick="check();">
+
+		</form>
+
+	</div>
+
+	<div id="div2" style="display:none;">
+		<h1>ClassBallot As voter</h1>
+		<br><br>
+
+		<h2>Vote</h2>
+		<form>
+			<select id="voteindex">
+
+			</select>
+		</form><br>
+		<button id="getitem" onclick="getitem()">Get Candidate</button>
+		<button id="vote" onclick="vote()">Vote</button>
+		<br><br>
+		<h2>Result</h2><br>
+		<button id="result" onclick="winner()">Result</button>
+
+		<br><br><br><span id="status"></span>
+	</div>
+
+</body>
+
+</html>
